@@ -3,6 +3,7 @@ class Tabelas {
         this.conn = conn
 
         this.criarAtendimentos()
+        this.criarPets()
     }
 
     criarAtendimentos() {
@@ -23,6 +24,23 @@ class Tabelas {
             }
             else {
                 console.log('Tabela Atendimentos criada com sucesso!')
+            }
+        })
+    }
+
+    criarPets() {
+        const sql = 'CREATE TABLE IF NOT EXISTS Pets (' +
+            'id int NOT NULL AUTO_INCREMENT, ' +
+            'nome varchar(50), ' +
+            'imagem varchar(200), ' +
+            'PRIMARY KEY(id))'
+
+        this.conn.query(sql, (erro) => {
+            if(erro) {
+                console.log(erro)
+            }
+            else {
+                console.log('Tabela Pets criada com sucesso!')
             }
         })
     }
